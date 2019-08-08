@@ -1,0 +1,19 @@
+thead{
+        color:#337AB7; 
+        font-size:16px;
+}
+
+
+h4{
+    color:#337AB7; 
+}
+
+.panel-heading h4{
+    color:#fff;
+}
+
+.filter-label{
+    color:#0d273d;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight:700;
+}

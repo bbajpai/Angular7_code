@@ -1,0 +1,59 @@
+
+<div class="conatiner">
+    <div class="row">
+    <div class="col-md-6 col-sm-push-2">
+            <h1> Register Form</h1>
+            <form #form="ngForm"  (submit)="submitForm(form)">
+                    <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
+                        <label for="fname" class="control-label">First Name</label>
+                        <input #firstName="ngModel" type="text" class="form-control" required placeholder="Name" name="firstName" id="firstName" 
+                            [ngModel]="model.firstName" (ngModelChange)="firstLetterToUppercase($event)" >
+                        <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+                            First Name is Required
+                        </div>
+                    </div>
+                  <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" placeholder="last name" name="lastName"
+                             id="lastName" [(ngModel)]="model.lastName">
+                    </div>
+
+                     <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="isFullTime" [(ngModel)]="model.isFullTime">Full Time Employee
+                        </label>
+                    </div>
+                 <label>Gender</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="gender" value="male" checked [(ngModel)]="model.gender">Male
+                        </label>
+                    </div>
+                    <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" value="female" [(ngModel)]="model.gender">Female
+                            </label>
+                    </div>
+                  <div class="form-group" [class.has-error]="hasPrimaryLanguageError">
+                        <label class="control-label">Primary Language</label>
+                        <select class="form-control" name="primaryLanguage"
+                            (blur)="validatePrimaryLanguage($event)"
+                            (change)="validatePrimaryLanguage($event)"
+                            [(ngModel)]="model.primaryLanguage">
+                           <option value="default">--Select a Language--</option>
+                            <option *ngFor="let lang of languages">
+                               {{ lang }}
+                           </option>
+                        </select>
+                    </div>
+
+                   <div class="form-group">
+                        <label>DOB</label>
+                        <input type="date" class="form-control" name="dob" [(ngModel)]="model.dob">
+                    </div>
+                    <!-- <input type="text" placeholder="Enter Name" required/>-->
+                    <button class="btn btn-primary btn-block" [disabled]="form.invalid" type="submit">Submit</button> 
+                </form>
+    </div>
+</div>
+</div>
